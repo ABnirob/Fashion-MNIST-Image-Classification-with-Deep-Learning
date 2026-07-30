@@ -1,1 +1,386 @@
-# Fashion-MNIST-Image-Classification-with-Deep-Learning
+<p align="center">
+  <h1 align="center">👕 Fashion-MNIST Classification with CNN (PyTorch)</h1>
+  <p align="center">
+    Deep Learning Image Classification using Convolutional Neural Networks (CNNs)
+  </p>
+</p>
+
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![Deep Learning](https://img.shields.io/badge/Deep_Learning-CNN-success?style=for-the-badge)
+![Computer Vision](https://img.shields.io/badge/Computer_Vision-FashionMNIST-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
+
+</p>
+
+---
+
+## 📖 Project Overview
+
+This project develops a **Convolutional Neural Network (CNN)** from scratch using
+**PyTorch** to classify grayscale fashion images from the **Fashion-MNIST**
+dataset into 10 clothing categories.
+
+The model learns visual patterns from clothing items such as:
+
+- T-Shirts
+- Trousers
+- Pullovers
+- Dresses
+- Coats
+- Sandals
+- Shirts
+- Sneakers
+- Bags
+- Ankle Boots
+
+and predicts the correct class label for previously unseen images.
+
+---
+
+## 🎯 Project Highlights
+
+| Metric | Score |
+|----------|----------|
+| Best Validation Accuracy | **92.97%** |
+| Final Test Accuracy | **91.91%** |
+| Final Test Loss | **0.2434** |
+| Classes | **10** |
+| Images | **70,000** |
+| Framework | **PyTorch** |
+
+---
+
+## 🖼️ Sample Predictions
+
+<p align="center">
+  <img width="1477" height="789" alt="predictions_grid" src="https://github.com/user-attachments/assets/875d0677-ad9b-451b-b1a8-05ce81a85d33" />
+</p>
+
+---
+
+## 🏗️ Deep Learning Pipeline
+
+```text
+Fashion-MNIST Dataset
+           │
+           ▼
+     Data Loading
+           │
+           ▼
+   Image Normalization
+           │
+           ▼
+      CNN Training
+           │
+           ▼
+   Validation & Tuning
+           │
+           ▼
+    Model Evaluation
+           │
+           ▼
+      Predictions
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+fashion-mnist-classification/
+│
+├── README.md
+├── requirements.txt
+├── LICENSE
+├── .gitignore
+│
+├── notebooks/
+│   ├── FashionMNISTProject.ipynb
+│   └── notebook_source.py
+│
+├── src/
+│   ├── model.py
+│   └── predict.py
+│
+├── models/
+│   └── best_fashion_cnn.pth
+│
+└── outputs/
+    └── figures/
+        ├── sample_images.png
+        ├── class_distribution.png
+        ├── training_curves.png
+        ├── confusion_matrix.png
+        ├── per_class_accuracy.png
+        ├── predictions_grid.png
+        └── misclassified_examples.png
+```
+
+---
+
+# 🧠 CNN Architecture
+
+The model consists of three convolutional feature extraction blocks followed by
+a fully connected classifier.
+
+| Layer | Details |
+|---------|---------|
+| Conv Block 1 | Conv2D (1 → 32) → BatchNorm → ReLU → MaxPool |
+| Conv Block 2 | Conv2D (32 → 64) → BatchNorm → ReLU → MaxPool |
+| Conv Block 3 | Conv2D (64 → 128) → BatchNorm → ReLU → MaxPool |
+| FC Head | Dense Layers + ReLU + Dropout + Output Layer |
+
+---
+
+### Architecture Summary
+
+```text
+Input Image (28×28×1)
+          │
+          ▼
+Conv2D (32 Filters)
+          │
+BatchNorm + ReLU
+          │
+MaxPooling
+          ▼
+Conv2D (64 Filters)
+          │
+BatchNorm + ReLU
+          │
+MaxPooling
+          ▼
+Conv2D (128 Filters)
+          │
+BatchNorm + ReLU
+          │
+MaxPooling
+          ▼
+Fully Connected Layers
+          ▼
+10-Class Softmax Output
+```
+
+---
+
+## ⚙️ Training Configuration
+
+| Parameter | Value |
+|------------|---------|
+| Framework | PyTorch |
+| Optimizer | Adam |
+| Learning Rate | 0.001 |
+| Scheduler | StepLR |
+| Epochs | 10 |
+| Batch Size | 256 |
+| Loss Function | Cross Entropy |
+| Regularization | BatchNorm + Dropout |
+
+---
+
+# 📊 Results & Visualizations
+
+---
+
+## 📊 Class Distribution
+
+Visualization of the distribution of images across all Fashion-MNIST categories.
+
+<p align="center">
+  <img width="989" height="390" alt="class_distribution" src="https://github.com/user-attachments/assets/6f52beba-1564-4846-82e9-66daa60a8537" />
+
+</p>
+
+---
+
+## 🎯 Confusion Matrix
+
+Confusion matrix showing the model's classification performance across all classes.
+
+<p align="center">
+  <img width="846" height="771" alt="confusion_matrix" src="https://github.com/user-attachments/assets/64f5cbac-3b97-417d-b2a3-8291941fd255" />
+</p>
+
+---
+
+## ❌ Misclassified Examples
+
+Examples of images that were incorrectly classified by the CNN model.
+
+<p align="center">
+  <img width="1489" height="576" alt="misclassified_examples" src="https://github.com/user-attachments/assets/069c01e9-4f50-463f-9ed2-fd613344fd5c" />
+</p>
+
+---
+
+## 📈 Per-Class Accuracy
+
+Classification accuracy achieved for each Fashion-MNIST category.
+
+<p align="center">
+  <img width="989" height="390" alt="per_class_accuracy" src="https://github.com/user-attachments/assets/ee4a9946-c073-4fe3-b99d-0c2d0db141e9" />
+</p>
+
+---
+
+## 🔍 Predictions Grid
+
+Sample predictions generated by the trained model on unseen test images.
+
+<p align="center">
+  <img width="1477" height="789" alt="predictions_grid" src="https://github.com/user-attachments/assets/19797ae8-5c38-4201-b594-e719d344fa99" />
+</p>
+
+---
+
+## 🖼️ Sample Images
+
+Representative Fashion-MNIST images from the dataset.
+
+<p align="center">
+  <img width="1170" height="494" alt="sample_images" src="https://github.com/user-attachments/assets/64de6e72-aed6-4a06-abdb-fd1648b66e78" />
+</p>
+
+---
+
+## 📉 Training Curves
+
+Training and validation loss/accuracy curves illustrating model learning behavior.
+
+<p align="center">
+  <img width="1389" height="490" alt="training_curves" src="https://github.com/user-attachments/assets/9efbf561-e7da-423a-8734-5fad6fa88055" />
+</p>
+
+---
+
+## 📋 Performance Summary
+
+| Metric | Value |
+|---------|---------|
+| Validation Accuracy | **92.97%** |
+| Test Accuracy | **91.91%** |
+| Test Loss | **0.2434** |
+
+### Key Insights
+
+✅ Excellent performance on:
+
+- Trouser
+- Bag
+- Sandal
+- Ankle Boot
+
+⚠️ Most confusion occurs among:
+
+- Shirt
+- T-Shirt/Top
+- Pullover
+- Coat
+
+This is expected due to highly similar silhouettes and textures in low-resolution grayscale images.
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone <your-repository-url>
+cd fashion-mnist-classification
+```
+
+---
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 3️⃣ Run Training Notebook
+
+```bash
+jupyter notebook notebooks/FashionMNISTProject.ipynb
+```
+
+The dataset downloads automatically through:
+
+```python
+torchvision.datasets.FashionMNIST
+```
+
+---
+
+### 4️⃣ Run Inference
+
+```bash
+cd src
+python predict.py --num-samples 8
+```
+
+---
+
+### 5️⃣ Load Trained Model
+
+```python
+import torch
+from src.model import FashionCNN
+
+model = FashionCNN(num_classes=10)
+
+model.load_state_dict(
+    torch.load(
+        "models/best_fashion_cnn.pth",
+        map_location="cpu"
+    )
+)
+
+model.eval()
+```
+
+---
+
+## 🛠️ Future Improvements
+
+- [ ] Data Augmentation
+- [ ] Transfer Learning
+- [ ] Residual CNN Architectures
+- [ ] Hyperparameter Optimization
+- [ ] Model Ensembling
+- [ ] Experiment Tracking (MLflow/W&B)
+- [ ] Deployment as Web Application
+
+---
+
+## 💡 Skills Demonstrated
+
+- Deep Learning
+- Computer Vision
+- Convolutional Neural Networks
+- PyTorch
+- Image Classification
+- Data Visualization
+- Hyperparameter Tuning
+- Model Evaluation
+- Feature Learning
+- Machine Learning Engineering
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for details.
+
+---
+
+<p align="center">
+<strong>Built with PyTorch • Deep Learning • Computer Vision • Fashion-MNIST</strong>
+</p>
